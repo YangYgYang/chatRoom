@@ -1,7 +1,14 @@
 const express = require('express');
 const app = express();
 const server = require('http').Server(app);
-const io = require('socket.io')(server);
+const socketIO = require('socket.io')
+const io = socketIO(server,{
+    cors: {
+        origin: '*'
+    }
+});
+
+//const io = require('socket.io')(server);
 let onlineCount = 0;
 
 app.get('/', (req, res) => {
